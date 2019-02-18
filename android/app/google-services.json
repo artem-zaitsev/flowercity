@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "50006701811",
+    "firebase_url": "https://flowercity-e1b75.firebaseio.com",
+    "project_id": "flowercity-e1b75",
+    "storage_bucket": "flowercity-e1b75.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:50006701811:android:5cafd0ff9113a242",
+        "android_client_info": {
+          "package_name": "ru.retam.flowercity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "50006701811-g4cdrindm5dkipfupkig0tle36vhhgtu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDStMK0Zgt4zzN9e7gG9uQcj9JF3aYBWhE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
