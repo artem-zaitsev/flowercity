@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flower_city/data/flower.dart';
 import 'package:flower_city/di/injector.dart';
 import 'package:flower_city/ui/flower_fialog.dart';
@@ -25,16 +27,16 @@ class _FlowersScreenState extends State<FlowersScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Stack(
                   children: <Widget>[
-                    IconButton(
-                      icon: Icon(
-                        Icons.shopping_basket,
-                        size: 24.0,
-                      ),
-                      onPressed: () {},
-                    ),
                     Positioned(
                       child: Text(snapshot.data.toString()),
                       top: 2.0,
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.favorite,
+                      ),
+                      tooltip: 'Air it',
+                      onPressed: () {},
                     )
                   ],
                 ),
@@ -58,21 +60,22 @@ class _FlowersScreenState extends State<FlowersScreen> {
       scrollDirection: Axis.vertical,
       itemCount: snapshot.data.length,
       itemBuilder: (BuildContext context, int index) {
-        return InkWell(
-          borderRadius: BorderRadius.circular(6.0),
-          highlightColor: Colors.black45,
-          onTap: () {
-            showDialog(snapshot, index, context);
-          },
-          child: Card(
-            clipBehavior: Clip.antiAlias,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(16.0),
-            ),
-            key: ValueKey(
-              snapshot.data[index].id,
-            ),
+        return Card(
+          clipBehavior: Clip.antiAlias,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16.0),
+          ),
+          key: ValueKey(
+            snapshot.data[index].id,
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(6.0),
+            highlightColor: Colors.indigo,
+            onTap: () {
+              showDialog(snapshot, index, context);
+            },
             child: Stack(
+              alignment: AlignmentDirectional.bottomCenter,
               children: <Widget>[
                 SizedBox.expand(
                   child: Image.network(
@@ -80,20 +83,23 @@ class _FlowersScreenState extends State<FlowersScreen> {
                     fit: BoxFit.fill,
                   ),
                 ),
-                Align(
-                  alignment: Alignment.bottomCenter,
+                BackdropFilter(
+                  filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 15.0),
                   child: Container(
-                    color: Colors.white24,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Text(snapshot.data[index].title),
-                        Text(
-                            "${snapshot.data[index].cost.cost} ${snapshot.data[index].cost.symbol}")
-                      ],
-                    ),
+                    constraints: BoxConstraints.expand(height: 32.0),
+                      color: Colors.transparent,
                   ),
-                )
+                ),
+                Container(
+                  constraints: BoxConstraints.expand(height: 32.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(snapshot.data[index].title),
+                      Text(
+                          "${snapshot.data[index].cost.cost} ${snapshot.data[index].cost.symbol}")
+                    ],
+                  ),
+                ),
               ],
             ),
           ),

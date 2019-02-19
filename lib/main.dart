@@ -30,10 +30,11 @@ class MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        splashColor: Colors.indigo,
+        primarySwatch: Colors.amber,
+        splashColor: Colors.amber[100],
         canvasColor: Colors.transparent,
-        scaffoldBackgroundColor: Colors.white
+        scaffoldBackgroundColor: Colors.white24,
+        cardColor: Colors.yellow[300]
       ),
       home: FlowersScreen(),
     );
